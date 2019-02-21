@@ -87,8 +87,8 @@ def get_effective_entry_date(effective_entry_date, as_date=False):
     _date = next_valid_effective_entry_date()
     if effective_entry_date > 0:
         # We have to delay for at least one day
-        if effective_entry_date < 2 and _date.isoweekday() in WEEKEND + [5]:
-            effective_entry_date = 2
+        # if effective_entry_date < 2 and _date.isoweekday() in WEEKEND + [5]:
+        #    effective_entry_date = 2
         for _ in range(effective_entry_date if effective_entry_date > 0 else 1):
             _date += datetime.timedelta(days=1)
             _date = next_valid_effective_entry_date(_date)
