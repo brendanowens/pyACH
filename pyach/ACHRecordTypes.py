@@ -83,15 +83,15 @@ def next_valid_effective_entry_date(_date=None):
     return _date
 
 
-def get_effective_entry_date(effective_entry_date, as_date=False):
+def get_effective_entry_date(effective_entry_delay, as_date=False):
     _date = next_valid_effective_entry_date()
-    if effective_entry_date > 0:
-        # We have to delay for at least one day
-        # if effective_entry_date < 2 and _date.isoweekday() in WEEKEND + [5]:
-        #    effective_entry_date = 2
-        for _ in range(effective_entry_date if effective_entry_date > 0 else 1):
-            _date += datetime.timedelta(days=1)
-            _date = next_valid_effective_entry_date(_date)
+    # if effective_entry_delay > 0:
+    # We have to delay for at least one day
+    # if effective_entry_delay < 2 and _date.isoweekday() in WEEKEND + [5]:
+    #     effective_entry_delay = 2
+    for _ in range(effective_entry_delay if effective_entry_delay > 0 else 1):
+        _date += datetime.timedelta(days=1)
+        _date = next_valid_effective_entry_date(_date)
     if as_date:
         return _date
     else:
